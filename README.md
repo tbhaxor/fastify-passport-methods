@@ -11,3 +11,5 @@ yarn prisma:generate
 yarn prisma:migrate
 yarn dev
 ```
+
+> **Note** Configuring all the strategies are required for it. Make sure the callback url is `http://localhost:8000/login/STRATREGY_NAME`.
