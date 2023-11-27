@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Delete Account
+    body 
+
+        p Hey #{user.name}! Do you really want to delete the account?
+
+        form(action="", method="post")
+            button(type="submit") Yes
+        a(href="/dashboard") Go Back  

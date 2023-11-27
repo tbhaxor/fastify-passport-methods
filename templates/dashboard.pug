@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Hello #{user.name}
+    body 
+        h1 Hello #{user.name}!
+
+        p
+            strong Bearer Token: 
+            | #{user.token}
+        p
+            strong JWT Token: 
+            | #{jwtToken}
+
+        p: a(href="/profile") Profile
+        p: a(href="/delete") Delete
+        p: a(href="/logout") Logout 
+
+        h2 Social Accounts
+
+        table(border=1) 
+            thead
+                tr 
+                    th Provier
+                    th Actions
+            tbody
+                each socialAccount in socialAccounts
+                    tr(style="text-align: center;")
+                        td= socialAccount.provider
+                        td 
+                            a(href=`/socials/${socialAccount.id}/unlink`) Unlink

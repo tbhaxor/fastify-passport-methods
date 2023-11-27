@@ -1,0 +1,10 @@
+diff --git a/dist/account/types/account.d.ts b/dist/account/types/account.d.ts
+index d3358121388d7170e58b89f7a5dc70e3e4a956b2..15c5b8a3a5cbc31c5842d6920edeeeba6e8e34d9 100644
+--- a/dist/account/types/account.d.ts
++++ b/dist/account/types/account.d.ts
+@@ -6,4 +6,5 @@ export interface IAccount {
+     status_message: string;
+     status: string;
+     uuid: string;
++    name: string;
+ }

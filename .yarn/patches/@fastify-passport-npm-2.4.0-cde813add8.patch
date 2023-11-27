@@ -1,0 +1,13 @@
+diff --git a/dist/Authenticator.d.ts b/dist/Authenticator.d.ts
+index 9392785487b2929ffe5c071de52405b2d8a7f67b..674d34c67513e8046fa7f4789a97b4a22ca3c2da 100644
+--- a/dist/Authenticator.d.ts
++++ b/dist/Authenticator.d.ts
+@@ -15,7 +15,7 @@ export declare class Authenticator {
+     key: string;
+     userProperty: string;
+     sessionManager: SecureSessionManager;
+-    private strategies;
++    public strategies: Record<string, any>;
+     private serializers;
+     private deserializers;
+     private infoTransformers;

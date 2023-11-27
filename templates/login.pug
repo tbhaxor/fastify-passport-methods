@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Login
+    body 
+        h1 #{title}
+        form(action="/login/local", method="post") 
+            table 
+                tr
+                    td Email
+                    td
+                        input(type="text", name="email")
+                tr
+                    td Password
+                    td
+                        input(type="password", name="password")
+                tr(colspan=2, style="width: 100%")
+                    td
+                        button(type="submit" style="width: 100%") Submit
+        
+        p
+            strong Other Login Methods
+        
+        ul 
+            li: a(href="/login/google") Login with Google
+            li: a(href="/login/facebook") Login with Facebook
+            li: a(href="/login/github") Login with Github
+            li: a(href="/login/twitter") Login with Twitter
+            li: a(href="/login/gitlab") Login with GitLab
+            li: a(href="/login/slack") Login with Slack
+            li: a(href="/login/digitalocean") Login with DigitalOcean
+            li: a(href="/login/eventbrite") Login with EventBrite
+            li: a(href="/login/linkedin") Login with Linkedin
+                
+            

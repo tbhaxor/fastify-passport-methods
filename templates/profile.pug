@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Update Profile
+    body 
+        if error
+            p: strong Error: #{error}
+
+        form(action="/profile", method="post") 
+            table 
+                tr
+                    td Fullname
+                    td 
+                        input(type="text", name="name", value=user.name, required)
+                tr
+                    td Email
+                    td
+                        input(type="email", name="email", value=user.email, required)
+
+                tr
+                    td Password
+                    td
+                        input(type="password", name="password")
+                tr(colspan=2, style="width: 100%")
+                    td
+                        button(type="submit" style="width: 100%") Submit
