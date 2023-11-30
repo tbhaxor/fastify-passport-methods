@@ -20,6 +20,7 @@
     "@types/passport-linkedin-oauth2": "^1.5.6",
     "@types/passport-local": "^1.0.38",
     "@types/passport-twitter": "^1.0.40",
+    "@types/totp-generator": "^0.0.8",
     "@types/uuid": "^9.0.7",
     "eslint": "^8.54.0",
     "nodemon": "^3.0.1",
@@ -32,7 +33,7 @@
     "prisma:migrate": "prisma migrate deploy",
     "format": "prettier -cw routes strategies server.mjs",
     "lint": "eslint --fix routes/* strategies/* server.mjs",
-    "dev": "nodemon --experimental-specifier-resolution=node server.mjs"
+    "dev": "nodemon -w .env -w strategies -w routes -w server.mjs --experimental-specifier-resolution=node server.mjs"
   },
   "dependencies": {
     "@fastify/formbody": "^7.4.0",
@@ -60,8 +61,11 @@
     "passport-linkedin-oauth2": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-slack-oauth2": "^1.2.0",
+    "passport-totp": "^0.0.2",
     "passport-twitter": "^1.0.4",
     "pug": "^3.0.2",
+    "thirty-two": "^1.0.2",
+    "totp-generator": "^0.0.14",
     "uuid": "^9.0.1"
   }
 }

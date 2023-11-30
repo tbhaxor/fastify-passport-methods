@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Setup 2FA
+    body 
+        h1 Hello #{user.name}! Setup 2 Factor Authentication
+
+        img(src=qrImage)
+        
+        br
+
+        a(href=otpUrl) Token URL
+
+        p= key

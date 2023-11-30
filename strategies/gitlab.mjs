@@ -6,8 +6,8 @@ dotenv.config();
 
 export default new Strategy(
   {
-    clientID: process.env.GITLAB_APP_ID,
-    clientSecret: process.env.GITLAB_APP_SECRET,
+    clientID: process.env.GITLAB_CLIENT_ID,
+    clientSecret: process.env.GITLAB_CLIENT_SECRET,
     callbackURL: "http://localhost:8000/login/gitlab",
     scope: ["email", "profile", "read_user"],
   },

@@ -15,6 +15,7 @@ html(lang="en")
             | #{jwtToken}
 
         p: a(href="/profile") Profile
+        p: a(href=`/2fa/${!has2FASetup ? 'setup' : 'delete'}`) #{has2FASetup ? 'Delete' : 'Setup'} 2FA
         p: a(href="/delete") Delete
         p: a(href="/logout") Logout 
 

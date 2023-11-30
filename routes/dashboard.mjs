@@ -17,7 +17,8 @@ export default function (fastify, _, done) {
       where: { userId: request.user.id },
       orderBy: { provider: "asc" },
     });
-    return reply.view("dashboard.pug", { user: request.user, jwtToken: request.jwtToken, socialAccounts });
+    const has2FASetup = await db.tOTPKey.count({ where: { userId: request.user.id } }).then((count) => count === 1);
+    return reply.view("dashboard.pug", { user: request.user, jwtToken: request.jwtToken, socialAccounts, has2FASetup });
   });
 
   fastify.get(

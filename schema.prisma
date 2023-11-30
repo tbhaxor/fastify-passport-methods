@@ -16,6 +16,7 @@ model User {
     name           String
     token          String
     socialAccounts SocialAccount[]
+    totpKey        TOTPKey?
 
     @@map("users")
 }
@@ -28,4 +29,13 @@ model SocialAccount {
 
     @@unique([id, provider])
     @@map("social_accounts")
+}
+
+model TOTPKey {
+    id     Int    @id @default(autoincrement())
+    key    String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId Int    @unique
+
+    @@map("totp_keys")
 }

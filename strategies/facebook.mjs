@@ -6,8 +6,8 @@ dotenv.config();
 
 export default new Strategy(
   {
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: "http://localhost:8000/login/facebook",
     profileFields: ["name", "email"],
   },

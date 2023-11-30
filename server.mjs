@@ -18,6 +18,7 @@ import dashboardRoute from "./routes/dashboard.mjs";
 import logoutRoute from "./routes/logout.mjs";
 import socialsRoute from "./routes/socials.mjs";
 import profileRoute from "./routes/profile.mjs";
+import twoFARoute from "./routes/2fa.mjs";
 
 const server = fastify({ logger: true });
 
@@ -39,6 +40,7 @@ server.register(dashboardRoute, { prefix: "/dashboard" });
 server.register(socialsRoute, { prefix: "/socials" });
 server.register(profileRoute, { prefix: "/profile" });
 server.register(deleteRoute, { prefix: "/delete" });
+server.register(twoFARoute, { prefix: "/2fa" });
 
 server.listen({ port: 8000, host: "127.0.0.1" });
 
