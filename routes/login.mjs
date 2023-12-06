@@ -15,6 +15,7 @@ export default function (fastify, _, done) {
   });
 
   fastify.get("/:method", (request, reply) => {
+    /** @type {string} */
     const method = request.params.method;
     fastifyPassport.authenticate(method, { session: true, failureRedirect: "/login", successRedirect: "/dashboard" })(
       request,
@@ -23,6 +24,7 @@ export default function (fastify, _, done) {
   });
 
   fastify.post("/:method", (request, reply) => {
+    /** @type {string} */
     const method = request.params.method;
     fastifyPassport.authenticate(method, { session: true, failureRedirect: "/login", successRedirect: "/dashboard" })(
       request,

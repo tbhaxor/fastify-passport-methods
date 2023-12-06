@@ -1,0 +1,72 @@
+diff --git a/index.d.ts b/index.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..103371776801a693c90baa342cbcb774e67014b1
+--- /dev/null
++++ b/index.d.ts
+@@ -0,0 +1,15 @@
++import { Profile, DoneCallback } from "passport"
++
++declare module "passport-amazon" {
++    type Options = {
++        clientID: string
++        clientSecret: string
++        callbackURL: string
++        scope: string | string[]
++    }
++
++    export class Strategy {
++        name: string | "amazon"
++        constructor(options: Options, callback: (accessToken: string, refreshToken: string, profile: Profile, done: DoneCallback) => void)
++    }
++}
+\ No newline at end of file
+diff --git a/package.json b/package.json
+index 4881f583902914617232e43cb0e23399eacba0f0..b4acdc583085db88832e318aa683c6ad402af89f 100644
+--- a/package.json
++++ b/package.json
+@@ -2,7 +2,14 @@
+   "name": "passport-amazon",
+   "version": "1.0.0",
+   "description": "Amazon authentication strategy for Passport.",
+-  "keywords": ["passport", "amazon", "auth", "authn", "authentication", "identity"],
++  "keywords": [
++    "passport",
++    "amazon",
++    "auth",
++    "authn",
++    "authentication",
++    "identity"
++  ],
+   "repository": {
+     "type": "git",
+     "url": "git://github.com/jaredhanson/passport-amazon.git"
+@@ -15,19 +22,24 @@
+     "email": "jaredhanson@gmail.com",
+     "url": "http://www.jaredhanson.net/"
+   },
+-  "licenses": [ {
+-    "type": "MIT",
+-    "url": "http://www.opensource.org/licenses/MIT" 
+-  } ],
++  "licenses": [
++    {
++      "type": "MIT",
++      "url": "http://www.opensource.org/licenses/MIT"
++    }
++  ],
+   "main": "./lib",
+   "dependencies": {
+     "passport-oauth2": "1.x.x"
+   },
+   "devDependencies": {
++    "@types/passport": "^1.0.16",
+     "vows": "0.8.x"
+   },
+   "scripts": {
+     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
+   },
+-  "engines": { "node": ">= 0.4.0" }
++  "engines": {
++    "node": ">= 0.4.0"
++  }
+ }

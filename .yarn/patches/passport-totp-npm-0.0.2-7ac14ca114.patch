@@ -1,0 +1,95 @@
+diff --git a/index.d.ts b/index.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..81bfb692aea339e55e175137e8608b0464708c64
+--- /dev/null
++++ b/index.d.ts
+@@ -0,0 +1,12 @@
++declare module "passport-totp" {
++    type Options = {
++        codeField: string
++        window: number
++    }
++
++    type Callback = (user: Express.User, key: string) => void;
++
++    export class Strategy {
++        constructor(options: Partial<Options> | Callback, callback: Callback)
++    }
++}
+\ No newline at end of file
+diff --git a/lib/strategy.js b/lib/strategy.js
+index 1d1c17b70ce98681e4e159792b14dae26d5c5654..844539e33a7945c5346c58b6b3a07fa46d5fda48 100644
+--- a/lib/strategy.js
++++ b/lib/strategy.js
+@@ -49,8 +49,8 @@ function Strategy(options, setup) {
+   }
+   
+   this._codeField = options.codeField || 'code';
+-  this._window = options.window !== undefined ? options.window : 6;
+-  
++  this._window = options.window || 6;
++
+   passport.Strategy.call(this);
+   this._setup = setup;
+   this.name = 'totp';
+@@ -68,29 +68,16 @@ util.inherits(Strategy, passport.Strategy);
+  * @api protected
+  */
+ Strategy.prototype.authenticate = function(req, options) {
+-  var value = lookup(req.body, this._codeField) || lookup(req.query, this._codeField);
+-  
+-  var self = this;
+-  this._setup(req.user, function(err, key, period) {
+-    if (err) { return self.error(err); }
+-    
+-    var rv = totp.verify(value, key, { window: self._window, time: period });
+-    if (!rv) { return self.fail(); }
+-    return self.success(req.user);
++  var code = req.body[this._codeField] || req.query[this._codeField];
++  if (typeof code != "string" || !/^\d+$/.test(code)) { return this.fail(); }  
++
++  this._setup(req.user,  (err, key) => {
++    if (err) { return this.error(err); }
++
++    var rv = totp.verify(code, key, { window: this._window });
++    if (!rv) { return this.fail(); }
++    return this.success(req.user);
+   });
+-  
+-  
+-  function lookup(obj, field) {
+-    if (!obj) { return null; }
+-    var chain = field.split(']').join('').split('[');
+-    for (var i = 0, len = chain.length; i < len; i++) {
+-      var prop = obj[chain[i]];
+-      if (typeof(prop) === 'undefined') { return null; }
+-      if (typeof(prop) !== 'object') { return prop; }
+-      obj = prop;
+-    }
+-    return null;
+-  }
+ }
+ 
+ 
+diff --git a/package.json b/package.json
+index b0f8da8724b5602399904c487553ef53f5efd102..2cd83a02298be2578db56184bb52db75b7545ac9 100644
+--- a/package.json
++++ b/package.json
+@@ -31,13 +31,14 @@
+   ],
+   "main": "./lib",
+   "dependencies": {
+-    "notp": "2.0.x",
++    "notp": "^2.0.3",
+     "passport-strategy": "1.0.0",
+     "pkginfo": "0.2.x"
+   },
+   "devDependencies": {
+-    "mocha": "1.x.x",
+-    "chai": "1.x.x"
++    "@types/passport": "^1.0.16",
++    "chai": "1.x.x",
++    "mocha": "1.x.x"
+   },
+   "scripts": {
+     "test": "NODE_PATH=./lib node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"

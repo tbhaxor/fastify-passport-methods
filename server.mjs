@@ -20,7 +20,7 @@ import socialsRoute from "./routes/socials.mjs";
 import profileRoute from "./routes/profile.mjs";
 import twoFARoute from "./routes/2fa.mjs";
 
-const server = fastify({ logger: true });
+const server = fastify({ logger: false });
 
 server.register(fastifyFormbody);
 server.register(fastifyView, {

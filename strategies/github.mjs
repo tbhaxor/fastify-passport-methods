@@ -19,7 +19,6 @@ export default new Strategy(
    * @returns
    */
   async (_accessToken, _refreshToken, profile, done) => {
-    console.log(_accessToken);
     await handleOuth2User(profile.provider, profile.id, profile.emails[0].value, profile.displayName, done);
   },
 );

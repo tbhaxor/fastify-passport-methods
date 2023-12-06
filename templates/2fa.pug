@@ -7,10 +7,33 @@ html(lang="en")
     body 
         h1 Hello #{user.name}! Setup 2 Factor Authentication
 
-        img(src=qrImage)
-        
+        table(border=1)
+            thead 
+                tr
+                    th(colspan=2 style="text-align: center") Integration
+                tr
+                    th Method
+                    th Value
+            tbody 
+                tr 
+                    td Link
+                    td(style="text-align: center")
+                        a(href=otpUrl) Integrate Me
+                tr
+                    td Key
+                    td(style="text-align: center")= key
+                tr
+                    td Image
+                    td(style="text-align: center")
+                        img(src=qrImage) 
+
         br
 
-        a(href=otpUrl) Token URL
-
-        p= key
+        table(border=1)
+            form(action="", method="post") 
+                tbody 
+                    tr 
+                        td Confirm Token
+                        td: input(type="text" name="token", autocomplete="off", pattern="[0-9]{6}", minlength=6, maxlength=6, focus)
+                    tr
+                        td(colspan=2, style="text-align: center"): button(type="submit", style="width: 50%") Save

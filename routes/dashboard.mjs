@@ -13,6 +13,11 @@ const db = new PrismaClient();
  */
 export default function (fastify, _, done) {
   fastify.get("/", { preHandler: [isAuthenticated, jwtInjector] }, async (request, reply) => {
+    const isTotpSet = await db.tOTPKey.count({ where: { userId: request.user.id } }).then((count) => count === 1);
+    if (isTotpSet && !request.session.get("is2FaConfirmed")) {
+      return reply.redirect("/2fa/confirm");
+    }
+
     const socialAccounts = await db.socialAccount.findMany({
       where: { userId: request.user.id },
       orderBy: { provider: "asc" },

@@ -16,6 +16,7 @@ import digitaloceanStrategy from "./digitalocean.mjs";
 import eventbriteStrategy from "./eventbrite.mjs";
 import amazonStrategy from "./amazon.mjs";
 import linkedinStrategy from "./linkedin.mjs";
+import totpStrategy from "./totp.mjs";
 
 const db = new PrismaClient();
 
@@ -42,4 +43,5 @@ fastifyPassport
   .use("eventbrite", eventbriteStrategy)
   .use("amazon", amazonStrategy)
   .use("linkedin", linkedinStrategy)
+  .use("totp", totpStrategy)
   .use("gitlab", gitlabStrategy);
