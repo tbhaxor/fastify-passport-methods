@@ -618,16 +618,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/passport-linkedin-oauth2@npm:^1.5.6":
-  version: 1.5.6
-  resolution: "@types/passport-linkedin-oauth2@npm:1.5.6"
-  dependencies:
-    "@types/express": "npm:*"
-    "@types/passport": "npm:*"
-  checksum: b8aac963efb50e2b945da59777ef604849e2ee86c2c34848e5a46491a45b78bd0826371701827b4a2e09841b9de59ba7f4fd386cd9a8fa7e4fea10e076b71640
-  languageName: node
-  linkType: hard
-
 "@types/passport-local@npm:^1.0.38":
   version: 1.0.38
   resolution: "@types/passport-local@npm:1.0.38"
@@ -1641,7 +1631,6 @@ __metadata:
     "@types/passport-http": "npm:^0.3.11"
     "@types/passport-http-bearer": "npm:^1.0.41"
     "@types/passport-jwt": "npm:^3.0.13"
-    "@types/passport-linkedin-oauth2": "npm:^1.5.6"
     "@types/passport-local": "npm:^1.0.38"
     "@types/passport-twitter": "npm:^1.0.40"
     "@types/uuid": "npm:^9.0.7"
@@ -1664,7 +1653,6 @@ __metadata:
     passport-http: "npm:^0.3.0"
     passport-http-bearer: "npm:^1.0.1"
     passport-jwt: "npm:^4.0.1"
-    passport-linkedin-oauth2: "npm:^2.0.0"
     passport-local: "npm:^1.0.0"
     passport-slack-oauth2: "npm:^1.2.0"
     passport-totp: "patch:passport-totp@npm%3A0.0.2#~/.yarn/patches/passport-totp-npm-0.0.2-7ac14ca114.patch"
@@ -3046,15 +3034,6 @@ __metadata:
     jsonwebtoken: "npm:^9.0.0"
     passport-strategy: "npm:^1.0.0"
   checksum: d7e2b472d399f596a1db31310f8e63d10777ab7468b9a378c964156e5f0a772598b007417356ead578cfdaf60dc2bba39a55f0033ca865186fdb2a2b198e2e7e
-  languageName: node
-  linkType: hard
-
-"passport-linkedin-oauth2@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "passport-linkedin-oauth2@npm:2.0.0"
-  dependencies:
-    passport-oauth2: "npm:1.x.x"
-  checksum: ebe92702330dfd5b60cc75e4e8c19cc238804b64c1b5eef09174b7933372df6ea3a13d161cbc7485ca85d898573a3085a9d5d87b1dcd7e1ca193b011b99c66c9
   languageName: node
   linkType: hard
 
